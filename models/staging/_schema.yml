@@ -1,0 +1,28 @@
+version: 2
+
+models:
+  - name: stg_hr_employees
+    description: "Cleaned and renamed raw IBM HR Analytics employee data. One row per employee."
+    columns:
+      - name: employee_id
+        description: "Unique identifier for each employee"
+      - name: age
+        description: "Employee age in years"
+      - name: gender
+        description: "Employee gender"
+      - name: marital_status
+        description: "Marital status - Single, Married or Divorced"
+      - name: department
+        description: "Department the employee belongs to"
+      - name: job_role
+        description: "Specific job role within the department"
+      - name: monthly_income
+        description: "Monthly salary in USD"
+      - name: job_satisfaction
+        description: "Job satisfaction score 1-4 where 1=Low and 4=Very High"
+      - name: overtime
+        description: "Whether the employee works overtime - Yes or No"
+      - name: is_attrition
+        description: "Whether the employee left the company - true or false"
+      - name: years_at_company
+        description: "Number of years the employee has been at the company"
