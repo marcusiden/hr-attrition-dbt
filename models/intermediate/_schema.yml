@@ -1,0 +1,42 @@
+version: 2
+
+models:
+  - name: int_employee_satisfaction
+    description: "Combines all 5 satisfaction scores into a composite score and satisfaction band per employee."
+    columns:
+      - name: employee_id
+        description: "Unique employee identifier"
+      - name: composite_satisfaction_score
+        description: "Average of job, environment, relationship, work-life balance and job involvement scores"
+      - name: satisfaction_band
+        description: "Human readable satisfaction label - Low, Medium, High or Very High"
+
+  - name: int_tenure_bands
+    description: "Buckets employee tenure into bands and career stages for easier analysis."
+    columns:
+      - name: employee_id
+        description: "Unique employee identifier"
+      - name: tenure_band
+        description: "Years at company grouped into bands - 0-1, 1-3, 3-5, 5-10, 10+ Years"
+      - name: career_stage
+        description: "Career stage based on total working years - Early, Mid or Senior Career"
+
+  - name: int_compensation_analysis
+    description: "Compares each employee salary against the average for their job role and flags underpaid employees."
+    columns:
+      - name: employee_id
+        description: "Unique employee identifier"
+      - name: income_vs_role_avg
+        description: "Difference between employee monthly income and their role average"
+      - name: is_underpaid
+        description: "True if employee earns more than 20% below their role average"
+
+  - name: int_attrition_flags
+    description: "Combines risk factors to generate an attrition risk score and label per employee."
+    columns:
+      - name: employee_id
+        description: "Unique employee identifier"
+      - name: attrition_risk_score
+        description: "Count of risk factors present for this employee - max 5"
+      - name: attrition_risk_label
+        description: "Risk classification - Low Risk, Medium Risk or High Risk"
