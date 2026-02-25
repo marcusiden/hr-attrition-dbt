@@ -1,0 +1,57 @@
+version: 2
+
+models:
+  - name: fct_employee_attrition
+    description: "Fact table with one row per employee including attrition status, risk scores, compensation analysis and satisfaction metrics."
+    columns:
+      - name: attrition_key
+        description: "Surrogate primary key"
+        tests:
+          - unique
+          - not_null
+      - name: employee_id
+        description: "Unique employee identifier"
+        tests:
+          - unique
+          - not_null
+      - name: is_attrition
+        description: "Whether the employee left the company"
+        tests:
+          - not_null
+      - name: attrition_risk_label
+        description: "Risk classification based on risk factors"
+        tests:
+          - accepted_values:
+              values: ['Low Risk', 'Medium Risk', 'High Risk']
+      - name: satisfaction_band
+        description: "Composite satisfaction classification"
+        tests:
+          - accepted_values:
+              values: ['Low', 'Medium', 'High', 'Very High']
+
+  - name: dim_employees
+    description: "Employee demographic dimension table"
+    columns:
+      - name: employee_id
+        description: "Unique employee identifier"
+        tests:
+          - unique
+          - not_null
+
+  - name: dim_departments
+    description: "Department and job role dimension table"
+    columns:
+      - name: department_key
+        description: "Surrogate primary key"
+        tests:
+          - unique
+          - not_null
+
+  - name: dim_satisfaction_scores
+    description: "Employee satisfaction scores dimension"
+    columns:
+      - name: employee_id
+        description: "Unique employee identifier"
+        tests:
+          - unique
+          - not_null
